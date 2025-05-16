@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¿Quieres ser mi novia?</title>
     <style>
-        body {
+          body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
@@ -89,7 +89,7 @@
             100% { opacity: 0.5; }
         }
 
-        /* Título */
+        /* Parpadeo suave del título con glow y brillo */
         h1 {
             color: white;
             margin-bottom: 30px;
@@ -155,6 +155,7 @@
         #noBtn {
             background-color: #9775b7;
             transition: background-color 0.3s ease; /* Transición suave */
+            position: absolute; /* Para que se pueda mover libremente */
         }
 
         #noBtn:hover {
@@ -170,25 +171,18 @@
             margin-top: 40px;
             font-size: 1.8em;
             font-weight: bold;
-            color: #fce4ec;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            background-color: transparent;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             padding: 15px;
             border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.2);
             opacity: 0; /* Inicialmente invisible para la transición */
             transition: opacity 0.5s ease-in-out; /* Transición suave */
             z-index: 2;
-            animation: none; /* Removemos la animación de brillo inicial aquí */
         }
 
         .show-respuesta {
             opacity: 1 !important;
-            animation: brightness 1.5s ease-in-out infinite alternate; /* Añadimos la animación al mostrarse */
-        }
-
-        @keyframes brightness {
-            0% { filter: brightness(1); }
-            100% { filter: brightness(1.3); }
         }
 
         .te-amo {
@@ -209,16 +203,11 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-            width: 90%; /* Ajustar ancho en pantallas pequeñas */
-            max-width: 560px; /* Mantener un máximo */
-            height: auto;
             z-index: 2;
         }
 
         .youtube-player iframe {
             display: block;
-            width: 100%;
-            aspect-ratio: 16 / 9; /* Proporción para video */
         }
 
         .esquina-inferior-derecha {
@@ -226,7 +215,7 @@
             bottom: 20px;
             right: 20px;
             color: white;
-            font-size: 1.2em; /* Reducir tamaño en móviles */
+            font-size: 1.5em;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -238,7 +227,7 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            font-size: 1.5em; /* Reducir tamaño en móviles */
+            font-size: 2em;
             font-weight: bold;
             color: white;
             background: linear-gradient(135deg, rgba(255, 110, 196, 0.7), rgba(120, 75, 160, 0.7));
@@ -253,10 +242,8 @@
 
         #pixel-box {
             margin-top: 30px;
-            width: 80%; /* Ajustar ancho */
-            max-width: 220px;
-            height: auto; /* Ajustar altura automáticamente */
-            padding: 15px 0; /* Añadir padding vertical */
+            width: 220px;
+            height: 90px;
             background-color: #e91e63;
             filter: blur(15px);
             display: flex;
@@ -266,7 +253,7 @@
             border-radius: 10px;
             transition: filter 0.3s ease, color 0.3s ease, background-color 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
             color: transparent;
-            font-size: 1em; /* Reducir tamaño de fuente */
+            font-size: 1.3em;
             font-weight: bold;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
             opacity: 0;
@@ -284,46 +271,6 @@
 
         .show-pixel-box {
             opacity: 1 !important;
-        }
-
-        /* Media query para pantallas más pequeñas (móviles) */
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2em;
-                margin-bottom: 20px;
-            }
-
-            .buttons {
-                flex-direction: row; /* Los botones en fila */
-                justify-content: center; /* Centrar los botones */
-                gap: 20px;
-                margin-bottom: 30px;
-                width: auto; /* Ajustar ancho automáticamente */
-            }
-
-            button {
-                font-size: 1em;
-                padding: 10px 20px;
-                width: auto; /* Ajustar ancho automáticamente */
-            }
-
-            .te-amo {
-                font-size: 1.5em;
-                margin-top: 20px;
-                padding: 10px 20px;
-            }
-
-            .esquina-superior-derecha {
-                font-size: 1.2em;
-                top: 10px;
-                right: 10px;
-            }
-
-            .esquina-inferior-derecha {
-                font-size: 1em;
-                bottom: 10px;
-                right: 10px;
-            }
         }
     </style>
 </head>
@@ -348,9 +295,7 @@
     <div id="pixel-box">Presiona aquí</div>
 
     <script>
-	JavaScript
-
-        const siBtn = document.getElementById('siBtn');
+	const siBtn = document.getElementById('siBtn');
         const noBtn = document.getElementById('noBtn');
         const respuestaDiv = document.getElementById('respuesta');
         const pixelBox = document.getElementById('pixel-box');
