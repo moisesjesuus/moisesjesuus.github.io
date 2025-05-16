@@ -105,15 +105,17 @@
         }
 
         .buttons {
-            display: flex;
-            gap: 20px; /* Reduje un poco el gap para móviles */
-            margin-bottom: 30px; /* Reduje un poco el margen inferior para móviles */
+            display: grid;
+            grid-template-columns: 1fr; /* Una sola columna */
+            gap: 15px; /* Espacio entre los botones */
+            margin-bottom: 30px;
             z-index: 2;
+            width: auto; /* Ajustar el ancho al contenido */
         }
 
         button {
-            padding: 12px 25px; /* Reduje un poco el padding para móviles */
-            font-size: 1em; /* Reduje un poco la fuente para móviles */
+            padding: 12px 25px;
+            font-size: 1em;
             border: none;
             border-radius: 10px;
             cursor: pointer;
@@ -123,6 +125,8 @@
             position: relative;
             overflow: hidden;
             z-index: 2;
+            width: 200px; /* Ancho fijo para los botones */
+            margin: 0 auto; /* Centrar los botones en la grid */
         }
 
         button::after {
@@ -155,7 +159,7 @@
         #noBtn {
             background-color: #9775b7;
             transition: background-color 0.3s ease; /* Transición suave */
-            position: absolute; /* Para que se pueda mover libremente */
+            /* position: absolute; */ /* Ya no es absoluto inicialmente */
         }
 
         #noBtn:hover {
@@ -289,17 +293,15 @@
             }
 
             .buttons {
-                flex-direction: row; /* Los botones en fila */
-                justify-content: center; /* Centrar los botones */
-                gap: 15px; /* Reduje el gap en la media query */
-                margin-bottom: 25px; /* Reduje el margen inferior en la media query */
-                width: auto; /* Ajustar ancho automáticamente */
+                grid-template-columns: 1fr; /* Aseguramos una columna en móviles también */
+                gap: 10px; /* Reducimos un poco el gap en móviles */
+                margin-bottom: 25px;
             }
 
             button {
                 font-size: 1em;
                 padding: 10px 20px;
-                width: auto; /* Ajustar ancho automáticamente */
+                width: auto; /* Ajustar ancho automáticamente en móviles */
             }
 
             .te-amo {
@@ -333,7 +335,7 @@
     <div class="te-amo">Te dedico esta canción</div>
 
     <div class="youtube-player">
-        <iframe width="100%" height="auto" src="https://www.youtube.com/embed/8obld3JrBNM?si=0F4P09xkJ1H0-mFB" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="aspect-ratio: 16 / 9;"></iframe>
+        <iframe width="100%" height="auto" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="aspect-ratio: 16 / 9;"></iframe>
     </div>
 
     <div class="esquina-superior-derecha">
@@ -367,8 +369,8 @@
             particle.addEventListener('animationend', () => {
                 particle.remove();
             });
-
-            setTimeout(() => {
+			
+			setTimeout(() => {
                 particle.style.opacity = 1;
             }, Math.random() * 500);
         }
